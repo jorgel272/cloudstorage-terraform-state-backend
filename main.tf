@@ -1,6 +1,11 @@
-# Create new multi-region storage bucket in the EU with versioning enabled
+#------------------------------------------------------------------------------
+# Create Google Cloud Storage bucket to store Terraform state file v.1.0.0
+#------------------------------------------------------------------------------
 
-# [START storage_bucket_tf_with_versioning]
+###############################################################################
+# Create new multi-region storage bucket in the EU with versioning enabled
+###############################################################################
+
 resource "random_id" "bucket_prefix" {
   byte_length = 8
 }
@@ -8,11 +13,9 @@ resource "random_id" "bucket_prefix" {
 resource "google_storage_bucket" "tf-state-storage" {
   name          = "${random_id.bucket_prefix.hex}-bucket-tfstate"
   force_destroy = false
-  location      = "US"
+  location      = "EU"
   storage_class = "STANDARD"
   versioning {
     enabled = true
   }
 }
-# [END storage_bucket_tf_with_versioning]
-
