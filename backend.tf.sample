@@ -1,0 +1,6 @@
+terraform {
+ backend "gcs" {
+   bucket  = google_storage_bucket.tf-state-storage.name
+   prefix  = "terraform/state"
+ }
+}
