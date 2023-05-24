@@ -3,6 +3,16 @@
 #------------------------------------------------------------------------------
 
 ###############################################################################
+# Enable APIs - Enable required APIs for deployment
+###############################################################################
+
+resource "google_project_service" "storage" {
+  service                    = "storage.googleapis.com"
+  disable_dependent_services = false
+  disable_on_destroy         = false
+}
+
+###############################################################################
 # Create new multi-region storage bucket in the EU with versioning enabled
 ###############################################################################
 
